@@ -1,0 +1,109 @@
+### **Q1**
+
+* **題目：** Which operating environment in the Cynefin Framework is characterized by clear *cause-and-effect relationships* and the use of **best practices**?
+* **選項：** * A. Complex
+* B. Chaotic
+* C. Clear
+* D. Complicated
+
+
+* **解答：** C. Clear
+
+### **Q2**
+
+* **題目：** A company facing a brand-new market with unpredictable customer reactions should primarily use which approach?
+* **選項：** * A. Apply standard operating procedures
+* B. Rely on expert analysis only
+* C. Conduct experiments and learn from outcomes
+* D. Delay decisions until full information is available
+
+
+* **解答：** C. Conduct experiments and learn from outcomes
+
+### **Q3**
+
+* **題目：** Which domain is most appropriate for situations such as **crisis management during a natural disaster**?
+* **選項：** * A. Clear
+* B. Complicated
+* C. Complex
+* D. Chaotic
+
+
+* **解答：** D. Chaotic
+
+### **Q4**
+
+* **題目：** Which domain encourages **small-scale experimentation** to identify emerging patterns?
+* **選項：** * A. Clear
+* B. Complicated
+* C. Complex
+* D. Chaotic
+
+
+* **解答：** C. Complex
+
+### **Q5**
+
+* **題目：** Applying rigid best practices to a highly uncertain and innovative problem is most likely to result in:
+* **選項：** * A. Increased efficiency
+* B. Better employee morale
+* C. Poor outcomes due to misdiagnosis of the context
+* D. Faster decision-making
+
+
+* **解答：** C. Poor outcomes due to misdiagnosis of the context
+
+### **Q6**
+
+* **題目：** Which lifecycle MOST clearly assumes that **each phase must be completed before the next begins**, with minimal overlap?
+* **選項：** * A. Incremental
+* B. Agile
+* C. Iterative
+* D. Predictive
+
+
+* **解答：** D. Predictive
+
+### **Q7**
+
+* **題目：** Which project lifecycle explicitly combines **frequent feedback** and **early delivery of usable outputs**?
+* **選項：** * A. Predictive
+* B. Iterative
+* C. Incremental
+* D. Agile
+
+
+* **解答：** D. Agile
+
+### **Q8**
+
+* **題目：** Which lifecycle would be the **LEAST appropriate** when requirements are fixed and regulatory compliance demands detailed upfront planning?
+* **選項：** * A. Predictive
+* B. Iterative
+* C. Incremental
+* D. Agile
+
+
+* **解答：** D. Agile
+
+### **Q9**
+
+* **題目：** A radar chart shows strong scores for Culture and Team, but low scores for Change Rate and Incremental Delivery. What is the MOST reasonable conclusion?
+* **選項：** * A. Agile should still be fully adopted
+* B. Predictive lifecycle is automatically superior
+* C. Agile may offer limited benefits given project constraints
+* D. Team capability alone compensates for project stability
+
+
+* **解答：** C. Agile may offer limited benefits given project constraints
+
+### **Q10**
+
+* **題目：** Two projects have equally skilled teams. Project A has frequent requirement changes; Project B has fixed scope and high regulatory verification. Which statement BEST compares Agile suitability?
+* **選項：** * A. Both projects are equally suitable for Agile
+* B. Project B is more suitable due to stability
+* C. Project A is more suitable due to adaptability needs
+* D. Suitability depends only on organizational culture
+
+
+* **解答：** C. Project A is more suitable due to adaptability needs

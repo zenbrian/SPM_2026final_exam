@@ -1,0 +1,122 @@
+const questionBankData = [
+  {
+    "id": 1,
+    "question": "Which operating environment in the Cynefin Framework is characterized by clear *cause-and-effect relationships* and the use of **best practices**?",
+    "options": {
+      "A": "Complex",
+      "B": "Chaotic",
+      "C": "Clear",
+      "D": "Complicated"
+    },
+    "answer": "C",
+    "explanation": "在 Cynefin 框架中，**Clear（清晰/簡單）** 領域的特徵是因果關係非常明確且人人皆知。此領域的處理方法是「感知-分類-響應」（Sense - Categorize - Respond），並直接套用已知的**最佳實踐（Best Practices）**。"
+  },
+  {
+    "id": 2,
+    "question": "A company facing a brand-new market with unpredictable customer reactions should primarily use which approach?",
+    "options": {
+      "A": "Apply standard operating procedures",
+      "B": "Rely on expert analysis only",
+      "C": "Conduct experiments and learn from outcomes",
+      "D": "Delay decisions until full information is available"
+    },
+    "answer": "C",
+    "explanation": "面對全新的市場與不可預測的客戶反應，這屬於 Cynefin 框架中的 **Complex（複雜）** 領域。在複雜領域中，因果關係只能在事後理解，因此必須透過**實驗並從結果中學習**（Probe - Sense - Respond）來找出規律。"
+  },
+  {
+    "id": 3,
+    "question": "Which domain is most appropriate for situations such as **crisis management during a natural disaster**?",
+    "options": {
+      "A": "Clear",
+      "B": "Complicated",
+      "C": "Complex",
+      "D": "Chaotic"
+    },
+    "answer": "D",
+    "explanation": "自然災害時的危機處理屬於 Cynefin 框架中的 **Chaotic（混亂）** 領域。在混亂領域中沒有明確的因果關係，首要任務是**立刻採取行動以建立秩序**（Act - Sense - Respond），然後再行感知並響應。"
+  },
+  {
+    "id": 4,
+    "question": "Which domain encourages **small-scale experimentation** to identify emerging patterns?",
+    "options": {
+      "A": "Clear",
+      "B": "Complicated",
+      "C": "Complex",
+      "D": "Chaotic"
+    },
+    "answer": "C",
+    "explanation": "在 Cynefin 框架中，**Complex（複雜）** 領域需要透過**安全失敗的嘗試/實驗（Safe-to-fail experiments）**來引導並識別出浮現的模式（Emerging Patterns）。"
+  },
+  {
+    "id": 5,
+    "question": "Applying rigid best practices to a highly uncertain and innovative problem is most likely to result in:",
+    "options": {
+      "A": "Increased efficiency",
+      "B": "Better employee morale",
+      "C": "Poor outcomes due to misdiagnosis of the context",
+      "D": "Faster decision-making"
+    },
+    "answer": "C",
+    "explanation": "將僵化的最佳實踐（通常適用於 Clear 領域）應用到高度不確定且創新的問題上，會因為**誤判情境（Misdiagnosis of the context）**而導致錯誤的決策與糟糕的結果。"
+  },
+  {
+    "id": 6,
+    "question": "Which lifecycle MOST clearly assumes that **each phase must be completed before the next begins**, with minimal overlap?",
+    "options": {
+      "A": "Incremental",
+      "B": "Agile",
+      "C": "Iterative",
+      "D": "Predictive"
+    },
+    "answer": "D",
+    "explanation": "**預測型（Predictive/Waterfall）** 生命週期的核心假設是專案需求明確，且各階段（如需求、設計、開發、測試）必須**順序執行**，前一階段完成後才能開始下一階段，重疊極少。"
+  },
+  {
+    "id": 7,
+    "question": "Which project lifecycle explicitly combines **frequent feedback** and **early delivery of usable outputs**?",
+    "options": {
+      "A": "Predictive",
+      "B": "Iterative",
+      "C": "Incremental",
+      "D": "Agile"
+    },
+    "answer": "D",
+    "explanation": "**敏捷（Agile）** 生命週期結合了**迭代型（透過頻繁回饋來改進產品）**與**增量型（儘早且持續交付可運作的產出）**的優勢，能快速適應變化並提供商業價值。"
+  },
+  {
+    "id": 8,
+    "question": "Which lifecycle would be the **LEAST appropriate** when requirements are fixed and regulatory compliance demands detailed upfront planning?",
+    "options": {
+      "A": "Predictive",
+      "B": "Iterative",
+      "C": "Incremental",
+      "D": "Agile"
+    },
+    "answer": "D",
+    "explanation": "當專案需求固定、範疇明確且合規性要求嚴格的詳細前期規劃時，**預測型**是最合適的；而**敏捷型**因為強調彈性與變更，反而最不適用，可能會帶來多餘的開銷或合規風險。"
+  },
+  {
+    "id": 9,
+    "question": "A radar chart shows strong scores for Culture and Team, but low scores for Change Rate and Incremental Delivery. What is the MOST reasonable conclusion?",
+    "options": {
+      "A": "Agile should still be fully adopted",
+      "B": "Predictive lifecycle is automatically superior",
+      "C": "Agile may offer limited benefits given project constraints",
+      "D": "Team capability alone compensates for project stability"
+    },
+    "answer": "C",
+    "explanation": "雷達圖顯示團隊文化與能力適合敏捷，但專案本身的變更率（Change Rate）低且無法進行增量交付。這代表專案需求非常穩定且必須一次性交付，因此**敏捷開發在此專案限制下所帶來的效益非常有限**。"
+  },
+  {
+    "id": 10,
+    "question": "Two projects have equally skilled teams. Project A has frequent requirement changes; Project B has fixed scope and high regulatory verification. Which statement BEST compares Agile suitability?",
+    "options": {
+      "A": "Both projects are equally suitable for Agile",
+      "B": "Project B is more suitable due to stability",
+      "C": "Project A is more suitable due to adaptability needs",
+      "D": "Suitability depends only on organizational culture"
+    },
+    "answer": "C",
+    "explanation": "敏捷開發最適合應對高度不確定性與頻繁的需求變更（如專案 A），使其能發揮極大的適應力。而專案 B 需求穩定且合規性高，更適合使用預測型生命週期。因此**專案 A 比專案 B 更適合採用敏捷方法**。"
+  }
+];

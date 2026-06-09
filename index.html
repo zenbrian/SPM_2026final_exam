@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="zh-TW" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>軟專期末選擇題複習系統 - Quiz Review App</title>
+    <meta name="description" content="專為軟體工程專案管理設計的期末選擇題複習系統，支援隨機抽題、即時解析、個人成績統計與完整題庫瀏覽。">
+    <!-- Google Fonts: Outfit for headings, Noto Sans TC for traditional Chinese reading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Outfit:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="glass-bg-decorations">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="app-header">
+        <div class="header-container">
+            <h1 class="app-logo">
+                <i class="fa-solid fa-graduation-cap"></i>
+                <span>軟專期末複習</span>
+            </h1>
+            <nav class="app-nav">
+                <button id="nav-btn-home" class="nav-link active" aria-label="返回首頁">
+                    <i class="fa-solid fa-house"></i> 首頁
+                </button>
+                <button id="nav-btn-guide" class="nav-link" aria-label="瀏覽題庫">
+                    <i class="fa-solid fa-book-open"></i> 題庫瀏覽
+                </button>
+                <button id="theme-toggle-btn" class="theme-toggle" aria-label="切換主題">
+                    <i class="fa-solid fa-moon theme-icon-dark"></i>
+                    <i class="fa-solid fa-sun theme-icon-light" style="display: none;"></i>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <main class="app-main">
+        <div class="main-container">
+
+            <!-- VIEW 1: HOME SCREEN -->
+            <section id="view-home" class="view-section active">
+                <div class="card glass-card hero-card">
+                    <div class="hero-content">
+                        <h2>軟體工程專案管理複習系統</h2>
+                        <p class="hero-desc">你是gay</p>
+
+                        <div class="stats-grid">
+                            <div class="stat-item">
+                                <span class="stat-num" id="total-questions-count">0</span>
+                                <span class="stat-label">題庫總數</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-num">10</span>
+                                <span class="stat-label">每次抽題數</span>
+                            </div>
+                        </div>
+
+                        <div class="action-zone">
+                            <button id="start-quiz-btn" class="btn btn-primary btn-lg">
+                                <i class="fa-solid fa-play"></i> 開始測驗
+                            </button>
+                            <button id="go-to-guide-btn" class="btn btn-secondary btn-lg">
+                                <i class="fa-solid fa-magnifying-glass"></i> 瀏覽完整題庫
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 2: QUIZ SCREEN -->
+            <section id="view-quiz" class="view-section">
+                <div class="quiz-progress-wrapper">
+                    <div class="progress-info">
+                        <span class="progress-title" id="quiz-progress-text">第 1 / 10 題</span>
+                        <span class="progress-percentage" id="quiz-progress-percent">10%</span>
+                    </div>
+                    <div class="progress-bar-container">
+                        <div id="quiz-progress-fill" class="progress-bar-fill" style="width: 10%"></div>
+                    </div>
+                </div>
+
+                <div class="card glass-card quiz-card">
+                    <div class="quiz-question-container">
+                        <div class="question-badge">單選題</div>
+                        <h3 id="quiz-question-text" class="question-text">載入中...</h3>
+                    </div>
+
+                    <div id="quiz-options-container" class="options-list">
+                        <!-- Options generated dynamically by JS -->
+                    </div>
+
+                    <!-- Explanation Panel -->
+                    <div id="quiz-explanation-panel" class="explanation-panel hidden">
+                        <div class="explanation-header">
+                            <i id="explanation-icon" class="fa-solid"></i>
+                            <span id="explanation-status-text">回答正確！</span>
+                        </div>
+                        <div class="explanation-content">
+                            <p class="correct-answer-display">正確答案：<strong id="correct-answer-letter">A</strong></p>
+                            <div class="explanation-divider"></div>
+                            <h4 class="explanation-title">詳細解析：</h4>
+                            <p id="quiz-explanation-text" class="explanation-text-body">解析載入中...</p>
+                        </div>
+                    </div>
+
+                    <div class="quiz-actions">
+                        <button id="next-question-btn" class="btn btn-primary hidden">
+                            <span>下一題</span> <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 3: RESULTS SCREEN -->
+            <section id="view-result" class="view-section">
+                <div class="card glass-card result-card">
+                    <div class="result-header">
+                        <div class="score-circle-container">
+                            <svg class="score-svg" viewBox="0 0 120 120">
+                                <circle class="score-circle-bg" cx="60" cy="60" r="54"></circle>
+                                <circle id="score-circle-fill" class="score-circle-fill" cx="60" cy="60" r="54"
+                                    style="stroke-dasharray: 339.292; stroke-dashoffset: 339.292;"></circle>
+                            </svg>
+                            <div class="score-text-overlay">
+                                <span class="score-value" id="result-score-text">0</span>
+                                <span class="score-max">/ 10</span>
+                            </div>
+                        </div>
+                        <h2 id="result-title">測驗結束！</h2>
+                        <p id="result-subtitle" class="result-subtitle">再接再厲！</p>
+                    </div>
+
+                    <div class="result-meta-grid">
+                        <div class="meta-item">
+                            <i class="fa-regular fa-circle-check text-success"></i>
+                            <span class="meta-val" id="result-correct-count">0 題</span>
+                            <span class="meta-label">答對題數</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-regular fa-circle-xmark text-danger"></i>
+                            <span class="meta-val" id="result-incorrect-count">0 題</span>
+                            <span class="meta-label">答錯題數</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class="fa-regular fa-clock"></i>
+                            <span class="meta-val" id="result-time-text">00:00</span>
+                            <span class="meta-label">答題用時</span>
+                        </div>
+                    </div>
+
+                    <div class="result-actions">
+                        <button id="restart-quiz-btn" class="btn btn-primary">
+                            <i class="fa-solid fa-rotate-left"></i> 重新測驗
+                        </button>
+                        <button id="result-go-home-btn" class="btn btn-secondary">
+                            <i class="fa-solid fa-house"></i> 回首頁
+                        </button>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>答題回顧與解析</h3>
+                        <div id="result-review-list" class="review-list">
+                            <!-- Detail reviews populated dynamically -->
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- VIEW 4: STUDY GUIDE SCREEN -->
+            <section id="view-guide" class="view-section">
+                <div class="guide-header-bar">
+                    <h2>完整題庫瀏覽</h2>
+                    <div class="search-box-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="guide-search-input" placeholder="搜尋題目、關鍵字或解析..." aria-label="搜尋題庫">
+                        <button id="clear-search-btn" class="clear-search" style="display: none;" aria-label="清除搜尋">
+                            <i class="fa-solid fa-xmark"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="guide-questions-list" class="guide-list">
+                    <!-- Complete questions list dynamically populated -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 軟體工程專案管理期末複習系統. All rights reserved.</p>
+    </footer>
+
+    <!-- App JavaScript -->
+    <script src="questions.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
