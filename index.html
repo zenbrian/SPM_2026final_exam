@@ -114,7 +114,13 @@
                         </div>
                     </div>
 
-                    <div class="quiz-actions">
+                    <div class="quiz-actions" style="gap: 0.75rem;">
+                        <button id="self-correct-btn" class="btn btn-secondary text-success hidden" style="border-color: var(--success);">
+                            <i class="fa-solid fa-check"></i> 我答對了
+                        </button>
+                        <button id="self-incorrect-btn" class="btn btn-secondary text-danger hidden" style="border-color: var(--danger);">
+                            <i class="fa-solid fa-xmark"></i> 我答錯了
+                        </button>
                         <button id="submit-answers-btn" class="btn btn-primary hidden">
                             <span>確認提交</span> <i class="fa-solid fa-circle-check"></i>
                         </button>

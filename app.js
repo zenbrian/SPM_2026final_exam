@@ -38,6 +38,8 @@ const elCorrectAnswerLetter = document.getElementById('correct-answer-letter');
 const elQuizExplanationText = document.getElementById('quiz-explanation-text');
 const btnNextQuestion = document.getElementById('next-question-btn');
 const btnSubmitAnswers = document.getElementById('submit-answers-btn');
+const btnSelfCorrect = document.getElementById('self-correct-btn');
+const btnSelfIncorrect = document.getElementById('self-incorrect-btn');
 
 // Result view elements
 const elResultScoreText = document.getElementById('result-score-text');
@@ -172,6 +174,8 @@ function setupEventListeners() {
     // Quiz view actions
     btnNextQuestion.addEventListener('click', advanceQuiz);
     btnSubmitAnswers.addEventListener('click', handleSubmitAnswers);
+    btnSelfCorrect.addEventListener('click', () => handleSelfGrading(true));
+    btnSelfIncorrect.addEventListener('click', () => handleSelfGrading(false));
 
     // Result view actions
     btnRestartQuiz.addEventListener('click', startQuiz);
@@ -251,14 +255,43 @@ function loadQuestion(index) {
     elQuizExplanationPanel.classList.add('hidden');
     btnNextQuestion.classList.add('hidden');
     btnSubmitAnswers.classList.add('hidden');
+    btnSelfCorrect.classList.add('hidden');
+    btnSelfIncorrect.classList.add('hidden');
     selectedOptions.clear();
 
     // Update Question Badge
     const badge = elQuizView.querySelector('.question-badge');
     if (qData.type === 'multiple') {
         badge.textContent = '複選題 (多選)';
+    } else if (qData.type === 'blank') {
+        badge.textContent = '填充題';
     } else {
         badge.textContent = '單選題';
+    }
+
+    if (qData.type === 'blank') {
+        // Render inputs for each blank space
+        const answerCount = Array.isArray(qData.answer) ? qData.answer.length : 1;
+        for (let i = 0; i < answerCount; i++) {
+            const blankDiv = document.createElement('div');
+            blankDiv.className = 'blank-input-wrapper';
+            blankDiv.innerHTML = `
+                <label class="blank-label">空格 ${i + 1}：</label>
+                <input type="text" class="blank-input" placeholder="請輸入答案..." data-index="${i}">
+            `;
+            // Enable submit button when there is text
+            blankDiv.querySelector('.blank-input').addEventListener('input', () => {
+                const inputs = elQuizOptionsContainer.querySelectorAll('.blank-input');
+                const hasText = Array.from(inputs).some(inp => inp.value.trim().length > 0);
+                if (hasText) {
+                    btnSubmitAnswers.classList.remove('hidden');
+                } else {
+                    btnSubmitAnswers.classList.add('hidden');
+                }
+            });
+            elQuizOptionsContainer.appendChild(blankDiv);
+        }
+        return; // Skip normal option generation
     }
 
     Object.entries(qData.options).forEach(([letter, text]) => {
@@ -366,6 +399,31 @@ function handleSubmitAnswers() {
     const qData = quizQuestions[currentQuestionIndex];
     btnSubmitAnswers.classList.add('hidden');
 
+    if (qData.type === 'blank') {
+        // Disable text inputs
+        const inputs = elQuizOptionsContainer.querySelectorAll('.blank-input');
+        inputs.forEach(inp => inp.disabled = true);
+
+        // Display correct answer labels
+        const correctAnswers = Array.isArray(qData.answer) ? qData.answer : [qData.answer];
+        const correctLabels = correctAnswers.map((ans, idx) => `空格 ${idx + 1} 正確答案：<strong>${ans}</strong>`).join('<br>');
+        elCorrectAnswerLetter.innerHTML = correctLabels;
+        elQuizExplanationText.innerHTML = qData.explanation;
+
+        // Display check panel neutral state and prompt self-grading
+        elQuizExplanationPanel.className = 'explanation-panel';
+        elExplanationIcon.className = 'fa-solid fa-circle-info';
+        elExplanationStatusText.textContent = '請對照答案，並在下方點選您的答題狀況：';
+        elQuizExplanationPanel.classList.remove('hidden');
+
+        // Reveal self grading buttons
+        btnSelfCorrect.classList.remove('hidden');
+        btnSelfIncorrect.classList.remove('hidden');
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        return;
+    }
+
     // Parse correct answers (handles array formats)
     const correctAnswers = Array.isArray(qData.answer) ? [...qData.answer].sort() : [qData.answer];
     const selectedLetters = Array.from(selectedOptions).sort();
@@ -427,6 +485,49 @@ function handleSubmitAnswers() {
     // Reveal elements
     elQuizExplanationPanel.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Update Next Button Text
+    if (currentQuestionIndex === quizQuestions.length - 1) {
+        btnNextQuestion.innerHTML = `<span>查看結果</span> <i class="fa-solid fa-square-poll-vertical"></i>`;
+    } else {
+        btnNextQuestion.innerHTML = `<span>下一題</span> <i class="fa-solid fa-arrow-right"></i>`;
+    }
+    btnNextQuestion.classList.remove('hidden');
+}
+
+function handleSelfGrading(isCorrect) {
+    btnSelfCorrect.classList.add('hidden');
+    btnSelfIncorrect.classList.add('hidden');
+
+    const qData = quizQuestions[currentQuestionIndex];
+
+    if (isCorrect) {
+        score++;
+        elQuizExplanationPanel.className = 'explanation-panel correct-theme';
+        elExplanationIcon.className = 'fa-solid fa-circle-check';
+        elExplanationStatusText.textContent = '自我評分：回答正確！ ✅';
+    } else {
+        elQuizExplanationPanel.className = 'explanation-panel incorrect-theme';
+        elExplanationIcon.className = 'fa-solid fa-circle-xmark';
+        elExplanationStatusText.textContent = '自我評分：回答錯誤。 ❌';
+    }
+
+    // Get input answers
+    const inputs = elQuizOptionsContainer.querySelectorAll('.blank-input');
+    const userAnswersList = Array.from(inputs).map(inp => inp.value.trim() || '(空白)');
+    const userText = userAnswersList.map((ans, idx) => `空格 ${idx + 1} 你的回答：${ans}`).join('<br>');
+
+    const correctAnswers = Array.isArray(qData.answer) ? qData.answer : [qData.answer];
+    const correctText = correctAnswers.map((ans, idx) => `空格 ${idx + 1} 正確答案：${ans}`).join('<br>');
+
+    userAnswers.push({
+        questionId: qData.id,
+        question: qData.question,
+        userAnswerText: userText,
+        correctAnswerText: correctText,
+        isCorrect: isCorrect,
+        explanation: qData.explanation
+    });
 
     // Update Next Button Text
     if (currentQuestionIndex === quizQuestions.length - 1) {

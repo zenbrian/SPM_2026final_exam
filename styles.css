@@ -1036,6 +1036,47 @@ body {
     color: var(--text-muted);
 }
 
+/* --- Fill in the Blank Styling --- */
+.blank-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.85rem;
+    width: 100%;
+}
+
+.blank-label {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    min-width: 80px;
+    flex-shrink: 0;
+}
+
+.blank-input {
+    flex: 1;
+    padding: 0.85rem 1.25rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.15s ease;
+}
+
+.blank-input:focus {
+    border-color: var(--text-primary);
+}
+
+.blank-input:disabled {
+    background: var(--primary-light);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    border-color: var(--glass-border);
+}
+
 /* --- Responsive Adaptations --- */
 @media (max-width: 768px) {
     .app-main {
