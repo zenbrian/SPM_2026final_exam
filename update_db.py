@@ -1,4 +1,7 @@
-const questionBankData = [
+# -*- coding: utf-8 -*-
+import json
+
+questions = [
   {
     "id": 1,
     "type": "single",
@@ -141,13 +144,7 @@ const questionBankData = [
       "E": "accountability",
       "F": "continuous improvement"
     },
-    "answer": [
-      "A",
-      "B",
-      "C",
-      "E",
-      "F"
-    ],
+    "answer": ["A", "B", "C", "E", "F"],
     "explanation": "在敏捷實踐中，**自我組織團隊（Self-organizing teams）**的核心特徵包含自主性（Autonomy）、協作（Collaboration）、所有權（Ownership）、責任感（Accountability）以及持續改進（Continuous improvement）。利己主義（Self-interest）並非自我組織團隊的特質。"
   },
   {
@@ -162,12 +159,7 @@ const questionBankData = [
       "E": "keep up with a consistent and manageable pace of product development over the long term",
       "F": "continuously improving agile project management processes"
     },
-    "answer": [
-      "A",
-      "D",
-      "E",
-      "F"
-    ],
+    "answer": ["A", "D", "E", "F"],
     "explanation": "**敏捷永續開發（Agile Sustainable Development）**強調團隊應該保持一個健康、可持續的開發步調。其核心考量包含：團隊成員的工作與生活平衡（A）、在交付速度與軟體品質之間取得平衡（D）、長期保持一致且可管理的開發節奏（E），以及持續優化管理流程（F）。"
   },
   {
@@ -207,13 +199,7 @@ const questionBankData = [
       "D": "scrum",
       "E": "lean"
     },
-    "answer": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E"
-    ],
+    "answer": ["A", "B", "C", "D", "E"],
     "explanation": "這些全部都是廣泛使用的敏捷框架或方法論。**Scrum** 專注於跨功能團隊與迭代交付；**Kanban** 專注於工作流視覺化與限制 WIP；**XP** 著重工程實踐；**Lean** 專注消除浪費；**Scaled Agile (SAFe)** 用於企業規模化敏捷。"
   },
   {
@@ -240,13 +226,7 @@ const questionBankData = [
       "D": "lean",
       "E": "scaled agile"
     },
-    "answer": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E"
-    ],
+    "answer": ["A", "B", "C", "D", "E"],
     "explanation": "同上，Scrum, Kanban, Extreme Programming, Lean, Scaled Agile 均屬於敏捷家族中的框架或實踐方法。"
   },
   {
@@ -299,11 +279,7 @@ const questionBankData = [
       "C": "project owner",
       "D": "product owner"
     },
-    "answer": [
-      "A",
-      "B",
-      "D"
-    ],
+    "answer": ["A", "B", "D"],
     "explanation": "在 Scrum 框架中，三大角色包含：開發團隊（Development Team）、Scrum Master（SM）、以及產品負責人（Product Owner, PO）。Scrum 中**沒有**「專案負責人（Project Owner）」角色。"
   },
   {
@@ -317,9 +293,7 @@ const questionBankData = [
       "D": "Own the product backlog",
       "E": "None of the above"
     },
-    "answer": [
-      "A"
-    ],
+    "answer": ["A"],
     "explanation": "在 Scrum 中，PO 全權建立並擁有 Product Backlog（B, D），且有權取消 Sprint（C）。PO **不應該只是一個傳話筒或中介人（An intermediate-person）**，而是必須具備足夠決策權的主導者。因此，A 描述 PO 為「內部團隊與市場需求的中介人」是不符合敏捷精神的角色定位。"
   },
   {
@@ -361,12 +335,7 @@ const questionBankData = [
       "E": "sprint backlog",
       "F": "increment"
     },
-    "answer": [
-      "A",
-      "B",
-      "C",
-      "D"
-    ],
+    "answer": ["A", "B", "C", "D"],
     "explanation": "Scrum 官方定義的活動（Events）包括：Sprint Planning、Daily Scrum、Sprint Review 以及 Sprint Retrospective。而 Sprint Backlog 與 Increment（增量）屬於 **Scrum 產出物（Artifacts）**，並非活動。"
   },
   {
@@ -472,13 +441,7 @@ const questionBankData = [
       "E": "stakeholders competing interests",
       "F": "team members skills"
     },
-    "answer": [
-      "A",
-      "C",
-      "D",
-      "E",
-      "F"
-    ],
+    "answer": ["A", "C", "D", "E", "F"],
     "explanation": "專案的複雜度受到多重維度的影響，包含範疇大小（A）、外部商業環境變動（C）、專案所使用的技術新穎度（D）、利害關係人的利益衝突（E），以及團隊成員的技能水準（F）。常規預算程序（B）不被視為核心影響因子。"
   },
   {
@@ -663,4 +626,16 @@ const questionBankData = [
     "answer": "C",
     "explanation": "雖然團隊文化與能力分數很高，但專案本身的變更率極低且關鍵性非常高（這需要高強度的合規與文檔控制）。因此，**採用混合模式（Hybrid）或在局限範疇內實施敏捷**會是比純預測型或純敏捷更合適的安全做法。"
   }
-];
+]
+
+# Write to questions.json
+with open("questions.json", "w", encoding="utf-8") as f:
+    json.dump(questions, f, ensure_ascii=False, indent=2)
+print("Updated questions.json successfully")
+
+# Write to questions.js
+with open("questions.js", "w", encoding="utf-8") as f:
+    f.write("const questionBankData = ")
+    json.dump(questions, f, ensure_ascii=False, indent=2)
+    f.write(";\n")
+print("Updated questions.js successfully")

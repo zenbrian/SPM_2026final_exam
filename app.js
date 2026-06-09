@@ -4,6 +4,7 @@ let quizQuestions = [];
 let currentQuestionIndex = 0;
 let score = 0;
 let userAnswers = []; // Records user's answer for each question in the quiz
+let selectedOptions = new Set(); // Stores current choices for multi-select questions
 let startTime = null;
 let timerInterval = null;
 
@@ -36,6 +37,7 @@ const elExplanationStatusText = document.getElementById('explanation-status-text
 const elCorrectAnswerLetter = document.getElementById('correct-answer-letter');
 const elQuizExplanationText = document.getElementById('quiz-explanation-text');
 const btnNextQuestion = document.getElementById('next-question-btn');
+const btnSubmitAnswers = document.getElementById('submit-answers-btn');
 
 // Result view elements
 const elResultScoreText = document.getElementById('result-score-text');
@@ -169,6 +171,7 @@ function setupEventListeners() {
 
     // Quiz view actions
     btnNextQuestion.addEventListener('click', advanceQuiz);
+    btnSubmitAnswers.addEventListener('click', handleSubmitAnswers);
 
     // Result view actions
     btnRestartQuiz.addEventListener('click', startQuiz);
@@ -247,6 +250,16 @@ function loadQuestion(index) {
     elQuizOptionsContainer.innerHTML = '';
     elQuizExplanationPanel.classList.add('hidden');
     btnNextQuestion.classList.add('hidden');
+    btnSubmitAnswers.classList.add('hidden');
+    selectedOptions.clear();
+
+    // Update Question Badge
+    const badge = elQuizView.querySelector('.question-badge');
+    if (qData.type === 'multiple') {
+        badge.textContent = '複選題 (多選)';
+    } else {
+        badge.textContent = '單選題';
+    }
 
     Object.entries(qData.options).forEach(([letter, text]) => {
         const optionBtn = document.createElement('button');
@@ -257,7 +270,26 @@ function loadQuestion(index) {
             <span class="option-text">${text}</span>
         `;
 
-        optionBtn.addEventListener('click', () => handleOptionSelect(letter, optionBtn));
+        optionBtn.addEventListener('click', () => {
+            if (qData.type === 'multiple') {
+                if (selectedOptions.has(letter)) {
+                    selectedOptions.delete(letter);
+                    optionBtn.classList.remove('selected');
+                } else {
+                    selectedOptions.add(letter);
+                    optionBtn.classList.add('selected');
+                }
+                
+                // Show submit button if there is at least one selection
+                if (selectedOptions.size > 0) {
+                    btnSubmitAnswers.classList.remove('hidden');
+                } else {
+                    btnSubmitAnswers.classList.add('hidden');
+                }
+            } else {
+                handleOptionSelect(letter, optionBtn);
+            }
+        });
         elQuizOptionsContainer.appendChild(optionBtn);
     });
 }
@@ -309,9 +341,8 @@ function handleOptionSelect(selectedLetter, clickedBtn) {
     userAnswers.push({
         questionId: qData.id,
         question: qData.question,
-        options: qData.options,
-        correctAnswer: correctLetter,
-        userAnswer: selectedLetter,
+        userAnswerText: `${selectedLetter}. ${qData.options[selectedLetter]}`,
+        correctAnswerText: `${correctLetter}. ${qData.options[correctLetter]}`,
         isCorrect: isCorrect,
         explanation: qData.explanation
     });
@@ -320,6 +351,81 @@ function handleOptionSelect(selectedLetter, clickedBtn) {
     elQuizExplanationPanel.classList.remove('hidden');
 
     // Scroll to top so the user can easily see correctness and explanation
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+    // Update Next Button Text
+    if (currentQuestionIndex === quizQuestions.length - 1) {
+        btnNextQuestion.innerHTML = `<span>查看結果</span> <i class="fa-solid fa-square-poll-vertical"></i>`;
+    } else {
+        btnNextQuestion.innerHTML = `<span>下一題</span> <i class="fa-solid fa-arrow-right"></i>`;
+    }
+    btnNextQuestion.classList.remove('hidden');
+}
+
+function handleSubmitAnswers() {
+    const qData = quizQuestions[currentQuestionIndex];
+    btnSubmitAnswers.classList.add('hidden');
+
+    // Parse correct answers (handles array formats)
+    const correctAnswers = Array.isArray(qData.answer) ? [...qData.answer].sort() : [qData.answer];
+    const selectedLetters = Array.from(selectedOptions).sort();
+
+    // Check if the user selected exactly the correct set
+    const isCorrect = selectedLetters.length === correctAnswers.length &&
+                      selectedLetters.every((val, index) => val === correctAnswers[index]);
+
+    // Disable and color code all option buttons
+    const optionButtons = elQuizOptionsContainer.querySelectorAll('.option-btn');
+    optionButtons.forEach(btn => {
+        btn.classList.add('disabled');
+        btn.classList.remove('selected');
+        const letter = btn.getAttribute('data-letter');
+
+        const isLetterCorrect = correctAnswers.includes(letter);
+        const isLetterSelected = selectedOptions.has(letter);
+
+        if (isLetterCorrect && isLetterSelected) {
+            btn.classList.add('selected-correct');
+        } else if (isLetterCorrect && !isLetterSelected) {
+            btn.classList.add('reveal-correct');
+        } else if (!isLetterCorrect && isLetterSelected) {
+            btn.classList.add('selected-incorrect');
+        } else {
+            btn.classList.add('dimmed');
+        }
+    });
+
+    if (isCorrect) {
+        score++;
+        elQuizExplanationPanel.className = 'explanation-panel correct-theme';
+        elExplanationIcon.className = 'fa-solid fa-circle-check';
+        elExplanationStatusText.textContent = '回答正確！';
+    } else {
+        elQuizExplanationPanel.className = 'explanation-panel incorrect-theme';
+        elExplanationIcon.className = 'fa-solid fa-circle-xmark';
+        elExplanationStatusText.textContent = '回答錯誤。';
+    }
+
+    // Format display for correct answers
+    const correctLabels = correctAnswers.map(letter => `<strong>${letter}</strong>. ${qData.options[letter]}`).join('<br>');
+    elCorrectAnswerLetter.innerHTML = correctLabels;
+    elQuizExplanationText.innerHTML = qData.explanation;
+
+    // Record user answer
+    const userText = selectedLetters.map(letter => `${letter}. ${qData.options[letter]}`).join('<br>');
+    const correctText = correctAnswers.map(letter => `${letter}. ${qData.options[letter]}`).join('<br>');
+
+    userAnswers.push({
+        questionId: qData.id,
+        question: qData.question,
+        userAnswerText: userText,
+        correctAnswerText: correctText,
+        isCorrect: isCorrect,
+        explanation: qData.explanation
+    });
+
+    // Reveal elements
+    elQuizExplanationPanel.classList.remove('hidden');
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
     // Update Next Button Text
@@ -411,11 +517,11 @@ function renderReviewList() {
             
             <div class="review-details">
                 <p class="review-choice ${ans.isCorrect ? 'user-pick-correct' : 'user-pick-incorrect'}">
-                    你的回答：<span>${ans.userAnswer}. ${ans.options[ans.userAnswer]}</span>
+                    你的回答：<br><span>${ans.userAnswerText}</span>
                 </p>
                 ${!ans.isCorrect ? `
                 <p class="review-choice correct-ans">
-                    正確答案：<span>${ans.correctAnswer}. ${ans.options[ans.correctAnswer]}</span>
+                    正確答案：<br><span>${ans.correctAnswerText}</span>
                 </p>
                 ` : ''}
             </div>
@@ -471,7 +577,7 @@ function renderStudyGuide(questions) {
         // Generate options markup
         let optionsMarkup = '';
         Object.entries(qData.options).forEach(([letter, text]) => {
-            const isCorrect = letter === qData.answer;
+            const isCorrect = Array.isArray(qData.answer) ? qData.answer.includes(letter) : letter === qData.answer;
             optionsMarkup += `
                 <div class="guide-opt-item ${isCorrect ? 'is-correct' : ''}">
                     <span class="guide-opt-letter">${letter}</span>
@@ -479,6 +585,8 @@ function renderStudyGuide(questions) {
                 </div>
             `;
         });
+
+        const correctAnsLabel = Array.isArray(qData.answer) ? qData.answer.join(', ') : qData.answer;
 
         guideCard.innerHTML = `
             <div class="guide-question-header">
@@ -493,7 +601,7 @@ function renderStudyGuide(questions) {
             <div class="guide-explanation-box">
                 <div class="guide-exp-header">
                     <i class="fa-solid fa-circle-info"></i>
-                    <span>正確答案：${qData.answer} 詳解與概念說明</span>
+                    <span>正確答案：${correctAnsLabel} 詳解與概念說明</span>
                 </div>
                 <p class="guide-exp-body">${qData.explanation}</p>
             </div>

@@ -428,6 +428,19 @@ body {
     border-color: var(--glass-border-hover);
 }
 
+/* Option selected state (before submission in multi-select) */
+.option-btn.selected {
+    background: var(--primary-light);
+    border-color: var(--text-primary);
+    border-width: 2px;
+}
+
+.option-btn.selected .option-badge {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+}
+
 /* Disable styles after user selects answer */
 .option-btn.disabled {
     cursor: default;
