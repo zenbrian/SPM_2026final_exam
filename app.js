@@ -675,19 +675,22 @@ function renderStudyGuide(questions) {
         const guideCard = document.createElement('div');
         guideCard.className = 'card glass-card guide-card';
 
-        // Generate options markup
+        // Generate options markup (only if options exist)
         let optionsMarkup = '';
-        Object.entries(qData.options).forEach(([letter, text]) => {
-            const isCorrect = Array.isArray(qData.answer) ? qData.answer.includes(letter) : letter === qData.answer;
-            optionsMarkup += `
-                <div class="guide-opt-item ${isCorrect ? 'is-correct' : ''}">
-                    <span class="guide-opt-letter">${letter}</span>
-                    <span class="guide-opt-text">${text}</span>
-                </div>
-            `;
-        });
+        if (qData.options) {
+            Object.entries(qData.options).forEach(([letter, text]) => {
+                const isCorrect = Array.isArray(qData.answer) ? qData.answer.includes(letter) : letter === qData.answer;
+                optionsMarkup += `
+                    <div class="guide-opt-item ${isCorrect ? 'is-correct' : ''}">
+                        <span class="guide-opt-letter">${letter}</span>
+                        <span class="guide-opt-text">${text}</span>
+                    </div>
+                `;
+            });
+        }
 
         const correctAnsLabel = Array.isArray(qData.answer) ? qData.answer.join(', ') : qData.answer;
+        const optionsGridClass = qData.options ? '' : 'hidden';
 
         guideCard.innerHTML = `
             <div class="guide-question-header">
@@ -695,7 +698,7 @@ function renderStudyGuide(questions) {
                 <span class="guide-qid-badge">ID: ${qData.id}</span>
             </div>
             
-            <div class="guide-options-grid">
+            <div class="guide-options-grid ${optionsGridClass}">
                 ${optionsMarkup}
             </div>
             
@@ -730,13 +733,15 @@ function handleSearch(e) {
         // Search explanation
         if (q.explanation.toLowerCase().includes(query)) return true;
 
-        // Search option text
+        // Search option text (only if options exist)
         let foundOption = false;
-        Object.values(q.options).forEach(optText => {
-            if (optText.toLowerCase().includes(query)) {
-                foundOption = true;
-            }
-        });
+        if (q.options) {
+            Object.values(q.options).forEach(optText => {
+                if (optText.toLowerCase().includes(query)) {
+                    foundOption = true;
+                }
+            });
+        }
         if (foundOption) return true;
 
         return false;
