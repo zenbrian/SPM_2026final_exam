@@ -117,6 +117,21 @@ function updateHomeStats() {
     }
 }
 
+function updateScopeIndicator() {
+    const activeOption = document.querySelector('.scope-option.active');
+    const indicator = document.querySelector('.scope-indicator');
+    const container = document.querySelector('.scope-options');
+    if (activeOption && indicator && container) {
+        const rect = activeOption.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+        
+        indicator.style.left = `${rect.left - containerRect.left}px`;
+        indicator.style.width = `${rect.width}px`;
+        indicator.style.height = `${rect.height}px`;
+        indicator.style.top = `${rect.top - containerRect.top}px`;
+    }
+}
+
 // --- Data Fetching ---
 async function loadQuestions() {
     try {
@@ -132,6 +147,9 @@ async function loadQuestions() {
 
         // Render study guide
         renderStudyGuide(questionBank);
+
+        // Update scope indicator position once layout settles
+        setTimeout(updateScopeIndicator, 50);
     } catch (error) {
         console.error('Error loading questions:', error);
         if (elTotalQuestionsCount) {
@@ -176,6 +194,9 @@ function showView(viewName) {
         window.scrollTo({ top: 0 });
         setTimeout(() => {
             targetView.classList.add('active');
+            if (viewName === 'home') {
+                updateScopeIndicator();
+            }
         }, 50);
     }
 }
@@ -199,8 +220,12 @@ function setupEventListeners() {
             });
             e.target.closest('.scope-option').classList.add('active');
             updateHomeStats();
+            updateScopeIndicator();
         });
     });
+
+    // Handle recalculation on window resize for responsive layouts
+    window.addEventListener('resize', updateScopeIndicator);
 
     // Quiz view actions
     btnNextQuestion.addEventListener('click', advanceQuiz);
