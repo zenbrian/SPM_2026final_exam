@@ -90,34 +90,54 @@ function toggleTheme() {
     updateThemeToggleIcons(newTheme);
 }
 
+// --- Scope Filtering Helpers ---
+function getSelectedScope() {
+    const elActiveRadio = document.querySelector('input[name="quiz-scope"]:checked');
+    return elActiveRadio ? elActiveRadio.value : 'all';
+}
+
+function getFilteredQuestions() {
+    const scope = getSelectedScope();
+    if (scope === 'week-9') {
+        return questionBank.filter(q => q.id >= 1 && q.id <= 22);
+    } else if (scope === 'week-11-14') {
+        return questionBank.filter(q => q.id >= 23 && q.id <= 37);
+    } else if (scope === 'last_week') {
+        return questionBank.filter(q => q.id >= 38 && q.id <= 49);
+    } else if (scope === 'last_week_blank') {
+        return questionBank.filter(q => q.id >= 50 && q.id <= 57);
+    }
+    return questionBank; // 'all'
+}
+
+function updateHomeStats() {
+    const filtered = getFilteredQuestions();
+    if (elTotalQuestionsCount) {
+        elTotalQuestionsCount.textContent = filtered.length;
+    }
+}
+
 // --- Data Fetching ---
 async function loadQuestions() {
     try {
-        // Check if questionBankData is loaded from questions.js (bypasses local file:// CORS issues)
-        if (typeof questionBankData !== 'undefined') {
-            questionBank = questionBankData;
-            console.log('Successfully loaded questions from questions.js (Local Script Mode)');
-        } else {
-            // Fallback to fetching questions.json (Server Mode)
-            const response = await fetch('questions.json');
-            if (!response.ok) {
-                throw new Error('Could not fetch questions.json');
-            }
-            questionBank = await response.json();
-            console.log('Successfully loaded questions from questions.json (HTTP Fetch Mode)');
+        const response = await fetch('questions.json');
+        if (!response.ok) {
+            throw new Error('Could not fetch questions.json');
         }
+        questionBank = await response.json();
+        console.log('Successfully loaded questions from questions.json (HTTP Fetch Mode)');
 
-        // Update total count on home page
-        if (elTotalQuestionsCount) {
-            elTotalQuestionsCount.textContent = questionBank.length;
-        }
+        // Update count on home page based on scope
+        updateHomeStats();
 
         // Render study guide
         renderStudyGuide(questionBank);
     } catch (error) {
         console.error('Error loading questions:', error);
-        elTotalQuestionsCount.textContent = '?';
-        alert('載入題目資料庫失敗，請確認 questions.js 或 questions.json 是否存在。');
+        if (elTotalQuestionsCount) {
+            elTotalQuestionsCount.textContent = '?';
+        }
+        alert('載入題目資料庫失敗，請確認 questions.json 是否存在。');
     }
 }
 
@@ -171,6 +191,17 @@ function setupEventListeners() {
     btnStartQuiz.addEventListener('click', startQuiz);
     btnGoToGuide.addEventListener('click', () => showView('guide'));
 
+    // Scope selection actions
+    document.querySelectorAll('input[name="quiz-scope"]').forEach(radio => {
+        radio.addEventListener('change', (e) => {
+            document.querySelectorAll('.scope-option').forEach(opt => {
+                opt.classList.remove('active');
+            });
+            e.target.closest('.scope-option').classList.add('active');
+            updateHomeStats();
+        });
+    });
+
     // Quiz view actions
     btnNextQuestion.addEventListener('click', advanceQuiz);
     btnSubmitAnswers.addEventListener('click', handleSubmitAnswers);
@@ -203,13 +234,14 @@ function shuffle(array) {
 }
 
 function startQuiz() {
-    if (questionBank.length === 0) {
-        alert('題庫無題目，無法開始測驗。');
+    const filteredQuestions = getFilteredQuestions();
+    if (filteredQuestions.length === 0) {
+        alert('該範圍內無題目，無法開始測驗。');
         return;
     }
 
     // 1. Shuffling and picking up to 10 questions
-    const shuffledBank = shuffle([...questionBank]);
+    const shuffledBank = shuffle([...filteredQuestions]);
     quizQuestions = shuffledBank.slice(0, Math.min(10, shuffledBank.length));
 
     // 2. Reset states

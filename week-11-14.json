@@ -1,0 +1,242 @@
+[
+    {
+        "id": 23,
+        "type": "multiple",
+        "question": "What does \"self-organizing teams\" refer to in agile manifesto? (multiple answers are allowed)",
+        "options": {
+            "A": "autonomy",
+            "B": "collaboration",
+            "C": "ownership",
+            "D": "self-interest",
+            "E": "accountability",
+            "F": "continuous improvement"
+        },
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "E",
+            "F"
+        ],
+        "explanation": "在敏捷實踐中，**自我組織團隊（Self-organizing teams）**的核心特徵包含自主性（Autonomy）、協作（Collaboration）、所有權（Ownership）、責任感（Accountability）以及持續改進（Continuous improvement）。利己主義（Self-interest）並非自我組織團隊的特質。"
+    },
+    {
+        "id": 24,
+        "type": "multiple",
+        "question": "What are the key considerations involved in \"agile sustainable development\"? (multiple answers are allowed)",
+        "options": {
+            "A": "healthy balance between work and life for the team members",
+            "B": "adaptation to the changing environment",
+            "C": "team member burnout and stress is allowed as long as they can produce outcomes",
+            "D": "right balance between delivering software at speed and ensuring high quality",
+            "E": "keep up with a consistent and manageable pace of product development over the long term",
+            "F": "continuously improving agile project management processes"
+        },
+        "answer": [
+            "A",
+            "D",
+            "E",
+            "F"
+        ],
+        "explanation": "**敏捷永續開發（Agile Sustainable Development）**強調團隊應該保持一個健康、可持續的開發步調。其核心考量包含：團隊成員的工作與生活平衡（A）、在交付速度與軟體品質之間取得平衡（D）、長期保持一致且可管理的開發節奏（E），以及持續優化管理流程（F）。"
+    },
+    {
+        "id": 25,
+        "type": "single",
+        "question": "Which of the following is NOT agile mindset?",
+        "options": {
+            "A": "Responsive to change over following a plan",
+            "B": "Customer collaboration over contract negotiation",
+            "C": "Individual and business benefit over processes and tools",
+            "D": "Working software over comprehensive documentation"
+        },
+        "answer": "C",
+        "explanation": "敏捷宣言的四大價值之一是：**「個人與互動」重於流程與工具**（Individuals and interactions over processes and tools），而非「個人與商業利益（Individual and business benefit）」。"
+    },
+    {
+        "id": 26,
+        "type": "single",
+        "question": "The agile principle that mentions about \"no over-engineering, reducing waste, maximizing value\" is:",
+        "options": {
+            "A": "Customer satisfaction through early and continuous delivery of valuable software.",
+            "B": "Working software is the primary measure of progress.",
+            "C": "Simplicity--the art of maximizing the amount of work not done--is essential.",
+            "D": "Deliver working software frequently, with a preference for the shortest timescale."
+        },
+        "answer": "C",
+        "explanation": "**簡單（Simplicity）**原則被定義為「最大化未做工作量之藝術」（the art of maximizing the amount of work not done）。這項原則的核心在於避免過度工程（over-engineering）並專注於交付最高價值的核心功能。"
+    },
+    {
+        "id": 27,
+        "type": "multiple",
+        "question": "Which of the following is a widely used agile framework? (multiple answers are allowed)",
+        "options": {
+            "A": "scaled agile",
+            "B": "kanban",
+            "C": "extreme programming",
+            "D": "scrum",
+            "E": "lean"
+        },
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+        ],
+        "explanation": "這些全部都是廣泛使用的敏捷框架或方法論。**Scrum** 專注於跨功能團隊與迭代交付；**Kanban** 專注於工作流視覺化與限制 WIP；**XP** 著重工程實踐；**Lean** 專注消除浪費；**Scaled Agile (SAFe)** 用於企業規模化敏捷。"
+    },
+    {
+        "id": 28,
+        "type": "single",
+        "question": "Agile mindset or manifesto emphasizes ________ communication",
+        "options": {
+            "A": "one-to-one",
+            "B": "face-to-face",
+            "C": "one-to-many",
+            "D": "many-to-many"
+        },
+        "answer": "B",
+        "explanation": "敏捷原則指出，不論是團隊內部還是與外部協作，最有效率且效果最好的溝通方式是**面對面溝通（face-to-face conversation）**。"
+    },
+    {
+        "id": 29,
+        "type": "multiple",
+        "question": "Which of the following is an agile framework? (multiple answers are allowed)",
+        "options": {
+            "A": "scrum",
+            "B": "kanban",
+            "C": "extreme programming",
+            "D": "lean",
+            "E": "scaled agile"
+        },
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D",
+            "E"
+        ],
+        "explanation": "同上，Scrum, Kanban, Extreme Programming, Lean, Scaled Agile 均屬於敏捷家族中的框架或實踐方法。"
+    },
+    {
+        "id": 30,
+        "type": "single",
+        "question": "Which of the following is NOT an agile framework?",
+        "options": {
+            "A": "Extreme programming",
+            "B": "Crystal development",
+            "C": "Feature-driven development",
+            "D": "Dynamic system development",
+            "E": "None of the above"
+        },
+        "answer": "E",
+        "explanation": "XP、Crystal（水晶方法）、FDD（特徵驅動開發）以及 DSDM（動態系統開發方法）**全部都是**正統的敏捷開發框架，因此答案是 None of the above（以上皆非）。"
+    },
+    {
+        "id": 31,
+        "type": "single",
+        "question": "What does \"delay in making decision\" mean in agile lean software development?",
+        "options": {
+            "A": "postponing the negative impact of a decision",
+            "B": "taking more time to make a better decision",
+            "C": "postponing the use of resources until the last minute",
+            "D": "postponing the waste of resources until the last minute"
+        },
+        "answer": "B",
+        "explanation": "在精實（Lean）開發中，「延遲決策」（Decide as late as possible）指的是**延遲承諾直到「最後關鍵時刻」（Last Responsible Moment）**。這樣做是為了收集更多的事實與數據，避免過早依據假設做出錯誤決定，從而做出更好的決策。"
+    },
+    {
+        "id": 32,
+        "type": "single",
+        "question": "The following describes the nature of \"timebox\" in scrum agile framework, except _______",
+        "options": {
+            "A": "sprint",
+            "B": "predetermined duration",
+            "C": "long duration",
+            "D": "iteration"
+        },
+        "answer": "C",
+        "explanation": "「時間箱」（Timebox）是指一個**預先設定好且固定的短時間區間**（如 1 到 4 週的 Sprint 或 Iteration）。它絕對不是「長週期（long duration）」的區間。"
+    },
+    {
+        "id": 33,
+        "type": "multiple",
+        "question": "Choose any of the following that is related to scrum team roles (multiple answers are allowed)",
+        "options": {
+            "A": "development team",
+            "B": "scrum master",
+            "C": "project owner",
+            "D": "product owner"
+        },
+        "answer": [
+            "A",
+            "B",
+            "D"
+        ],
+        "explanation": "在 Scrum 框架中，三大角色包含：開發團隊（Development Team）、Scrum Master（SM）、以及產品負責人（Product Owner, PO）。Scrum 中**沒有**「專案負責人（Project Owner）」角色。"
+    },
+    {
+        "id": 34,
+        "type": "multiple",
+        "question": "Which of the following is NOT the role of a \"product owner\" in scrum agile framework? (multiple answers are allowed)",
+        "options": {
+            "A": "An intermediate-person between the market-needs and internal-exe-team",
+            "B": "Create the product backlog",
+            "C": "Can cancel a sprint",
+            "D": "Own the product backlog",
+            "E": "None of the above"
+        },
+        "answer": [
+            "A"
+        ],
+        "explanation": "在 Scrum 中，PO 全權建立並擁有 Product Backlog（B, D），且有權取消 Sprint（C）。PO **不應該只是一個傳話筒或中介人（An intermediate-person）**，而是必須具備足夠決策權的主導者。因此，A 描述 PO 為「內部團隊與市場需求的中介人」是不符合敏捷精神的角色定位。"
+    },
+    {
+        "id": 35,
+        "type": "single",
+        "question": "Which of the following is the role of a scrum master?",
+        "options": {
+            "A": "Change sprint backlog",
+            "B": "A servant leader",
+            "C": "An intermediate-person between the market-needs and internal-exe-team",
+            "D": "Execute project work"
+        },
+        "answer": "B",
+        "explanation": "Scrum Master（SM）定位為**僕人式領導者（A servant leader）**，負責引導團隊遵循 Scrum 框架、移除阻礙、並保護團隊免受外部干擾。SM 不會隨意更改 Sprint Backlog，也不負責執行具體的開發工作。"
+    },
+    {
+        "id": 36,
+        "type": "single",
+        "question": "______________ agile framework is specifically designed for software development projects.",
+        "options": {
+            "A": "Scaled agile framework",
+            "B": "Kanban",
+            "C": "Extreme programming",
+            "D": "Scrum",
+            "E": "Lean"
+        },
+        "answer": "C",
+        "explanation": "**極限編程（Extreme Programming, XP）**是專為軟體開發設計的敏捷框架，著重於卓越的軟體工程實踐，如 TDD、結對編程等。相較之下，Scrum 或 Kanban 可以應用於非軟體領域。"
+    },
+    {
+        "id": 37,
+        "type": "multiple",
+        "question": "Scrum agile framework consists of the following events, such as ______ (multiple answers are allowed)",
+        "options": {
+            "A": "sprint retro",
+            "B": "daily scrum",
+            "C": "sprint review",
+            "D": "sprint planning",
+            "E": "sprint backlog",
+            "F": "increment"
+        },
+        "answer": [
+            "A",
+            "B",
+            "C",
+            "D"
+        ],
+        "explanation": "Scrum 官方定義的活動（Events）包括：Sprint Planning、Daily Scrum、Sprint Review 以及 Sprint Retrospective。而 Sprint Backlog 與 Increment（增量）屬於 **Scrum 產出物（Artifacts）**，並非活動。"
+    }
+]

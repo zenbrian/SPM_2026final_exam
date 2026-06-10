@@ -58,11 +58,37 @@
                         <div class="stats-grid">
                             <div class="stat-item">
                                 <span class="stat-num" id="total-questions-count">0</span>
-                                <span class="stat-label">題庫總數</span>
+                                <span class="stat-label">範圍題數</span>
                             </div>
                             <div class="stat-item">
                                 <span class="stat-num">10</span>
                                 <span class="stat-label">每次抽題數</span>
+                            </div>
+                        </div>
+
+                        <div class="scope-selection-card">
+                            <h3 class="scope-title"><i class="fa-solid fa-layer-group"></i> 選擇測驗範圍</h3>
+                            <div class="scope-options">
+                                <label class="scope-option active">
+                                    <input type="radio" name="quiz-scope" value="all" checked>
+                                    <span>全部範圍</span>
+                                </label>
+                                <label class="scope-option">
+                                    <input type="radio" name="quiz-scope" value="week-9">
+                                    <span>第 9 週 (22 題)</span>
+                                </label>
+                                <label class="scope-option">
+                                    <input type="radio" name="quiz-scope" value="week-11-14">
+                                    <span>第 11-14 週 (15 題)</span>
+                                </label>
+                                <label class="scope-option">
+                                    <input type="radio" name="quiz-scope" value="last_week">
+                                    <span>上週單選題 (12 題)</span>
+                                </label>
+                                <label class="scope-option">
+                                    <input type="radio" name="quiz-scope" value="last_week_blank">
+                                    <span>上週填充題 (8 題)</span>
+                                </label>
                             </div>
                         </div>
 
@@ -212,7 +238,6 @@
     </footer>
 
     <!-- App JavaScript -->
-    <script src="questions.js?v=1.0.2"></script>
     <script src="app.js?v=1.0.2"></script>
 </body>
 

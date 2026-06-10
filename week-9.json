@@ -1,0 +1,296 @@
+[
+    {
+        "id": 1,
+        "type": "single",
+        "question": "Cynefin Framework is used for __________________ .",
+        "options": {
+            "A": "analyzing project complexity only",
+            "B": "categorizing project complexity",
+            "C": "decide what to do with a project complexity",
+            "D": "collecting project complexity data"
+        },
+        "answer": "C",
+        "explanation": "Cynefin 框架本質上是一個**決策框架（Decision-making framework）**，其主要目的不僅是分析或分類複雜度，而是幫助專案管理者**決定在特定複雜度環境下應採取何種行動步驟**。"
+    },
+    {
+        "id": 2,
+        "type": "single",
+        "question": "What is the main characteristic of a \"incremental\" project lifecycle?",
+        "options": {
+            "A": "plan-driven, water fall, serial, linear, sequential",
+            "B": "feedback-driven, spiral steps",
+            "C": "small working pieces",
+            "D": "mixed of Iterative and Incremental"
+        },
+        "answer": "C",
+        "explanation": "**增量型（Incremental）** 生命週期的核心特徵是**交付可運作的小片段/增量（small working pieces）**。每一小部分均是完整可使用的，而不是在專案結束才一次性交付。"
+    },
+    {
+        "id": 3,
+        "type": "single",
+        "question": "According to Cynefin Framework, if your project is identified as \"complex\" then the series of steps to be taken is _________________________ .",
+        "options": {
+            "A": "sense --> analyze --> respond",
+            "B": "sense --> categorize --> respond",
+            "C": "probe --> sense --> respond",
+            "D": "act --> sense --> respond"
+        },
+        "answer": "C",
+        "explanation": "在複雜（Complex）領域中，因果關係無法事前預知，必須採取**「探索-感知-響應」（Probe --> sense --> respond）**的模式，透過實驗（Probe）來引導浮現出解決方案。"
+    },
+    {
+        "id": 4,
+        "type": "single",
+        "question": "According to Cynefin Framework, if your project is identified as \"chaotic\" then the series of steps to be taken is _________________________ .",
+        "options": {
+            "A": "sense --> analyze --> respond",
+            "B": "sense --> categorize --> respond",
+            "C": "probe --> sense --> respond",
+            "D": "act --> sense --> respond"
+        },
+        "answer": "D",
+        "explanation": "在混亂（Chaotic）領域中因果關係完全斷裂，管理者首要任務是**「行動以建立秩序-感知-響應」（Act --> sense --> respond）**，先行動穩定局面，再找尋因果關係。"
+    },
+    {
+        "id": 5,
+        "type": "single",
+        "question": "According to Cynefin Framework, which domain of complexity has \"unknown action or solution\"?",
+        "options": {
+            "A": "simple",
+            "B": "chaotic",
+            "C": "complex",
+            "D": "complicated"
+        },
+        "answer": "B",
+        "explanation": "在混亂（Chaotic）領域中，情勢緊急且因果關係不明，行動和解決方案均為未知（unknown action or solution），需要藉由快速行動（Act）來維持基礎秩序。"
+    },
+    {
+        "id": 6,
+        "type": "single",
+        "question": "What is the main characteristic of an \"agile\" project lifecycle?",
+        "options": {
+            "A": "plan-driven, water fall, serial, linear, sequential",
+            "B": "feedback-driven, spiral steps",
+            "C": "small working pieces",
+            "D": "mixed of Iterative and Incremental"
+        },
+        "answer": "D",
+        "explanation": "**敏捷（Agile）** 生命週期結合了**迭代型（Iterative，重複優化）**與**增量型（Incremental，分段交付）**的優勢，因此在 PMBOK 中被描述為這兩者的混合體。"
+    },
+    {
+        "id": 7,
+        "type": "single",
+        "question": "Which of the following has the least number of delivery, change, and stakeholder engagement?",
+        "options": {
+            "A": "Iterative lifecycle",
+            "B": "Predictive lifecycle",
+            "C": "Agile lifecycle",
+            "D": "Incremental lifecycle"
+        },
+        "answer": "B",
+        "explanation": "**預測型（Predictive / Waterfall）** 生命週期因為要求前期詳細規劃、按既定計劃線性執行，因此變更率最低、交付次數最少，且利害關係人的參與度主要集中在前期規劃與結尾。"
+    },
+    {
+        "id": 8,
+        "type": "multiple",
+        "question": "Which of the following is the factor affecting a project's complexity? (multiple answers are allowed)",
+        "options": {
+            "A": "project scope",
+            "B": "business budgeting process",
+            "C": "business environment",
+            "D": "technology used in the project",
+            "E": "stakeholders competing interests",
+            "F": "team members skills"
+        },
+        "answer": [
+            "A",
+            "C",
+            "D",
+            "E",
+            "F"
+        ],
+        "explanation": "專案的複雜度受到多重維度的影響，包含範疇大小（A）、外部商業環境變動（C）、專案所使用的技術新穎度（D）、利害關係人的利益衝突（E），以及團隊成員的技能水準（F）。常規預算程序（B）不被視為核心影響因子。"
+    },
+    {
+        "id": 9,
+        "type": "single",
+        "question": "Steven, is a project manager who is dealing with a project with high certainty, fixed scope and producing a final product at the end. So, Steven is very likely handling a project with _____________ .",
+        "options": {
+            "A": "Iterative lifecycle",
+            "B": "Incremental lifecycle",
+            "C": "Agile lifecycle",
+            "D": "Predictive lifecycle"
+        },
+        "answer": "D",
+        "explanation": "由於專案擁有高度確定性、範疇固定（Fixed Scope），且在最後才進行一次性最終交付，這完全符合**預測型（Predictive）**或瀑布型生命週期的特徵。"
+    },
+    {
+        "id": 10,
+        "type": "single",
+        "question": "Timeboxing is a time management technique that allows you to allocate a fixed or varied “duration / time frame” to an activity or a group of “user stories”. Which of the following is FALSE?",
+        "options": {
+            "A": "Varied duration is used in iteration-based agile lifecycle",
+            "B": "Fixed duration is used in iteration-based agile lifecycle",
+            "C": "Varied duration is used in flow-based agile lifecycle",
+            "D": "Fixed duration can range from 1 – 4 weeks"
+        },
+        "answer": "A",
+        "explanation": "在「以迭代為基礎的敏捷生命週期」（Iteration-based agile）中，時間箱（Timebox）的長度是**固定不變的**（通常是 1-4 週），用以保持開發節奏。因此說它是「Varied duration」是錯誤的敘述。"
+    },
+    {
+        "id": 11,
+        "type": "single",
+        "question": "A company facing a brand‑new market with unpredictable customer reactions should primarily use which approach?",
+        "options": {
+            "A": "Apply standard operating procedures",
+            "B": "Rely only on expert analysis",
+            "C": "Conduct experiments and learn from outcomes",
+            "D": "Delay decisions until complete information is available"
+        },
+        "answer": "C",
+        "explanation": "面臨不可預測的新市場時，專案處於複雜（Complex）領域，因果關係無法預先推導。最有效的做法是**透過安全失敗的實驗取得結果，並從結果中學習與調整**。"
+    },
+    {
+        "id": 12,
+        "type": "single",
+        "question": "Applying rigid best practices to a highly uncertain and innovative problem is most likely to result in:",
+        "options": {
+            "A": "Increased efficiency",
+            "B": "Improved employee morale",
+            "C": "Poor outcomes due to misdiagnosis of the context",
+            "D": "Faster decision‑making"
+        },
+        "answer": "C",
+        "explanation": "僵硬的最佳實踐只適用於簡單明確的環境。在創新且高度不確定的情境下硬套流程，屬於對情境診斷錯誤，極易因缺乏適應力而導致慘重失敗（Poor outcomes due to misdiagnosis of the context）。"
+    },
+    {
+        "id": 13,
+        "type": "single",
+        "question": "A project has stable requirements, a well‑understood solution, and must follow a strict sequence of phases from initiation to closing. Which project lifecycle is MOST appropriate?",
+        "options": {
+            "A": "Agile lifecycle",
+            "B": "Incremental lifecycle",
+            "C": "Iterative lifecycle",
+            "D": "Predictive lifecycle"
+        },
+        "answer": "D",
+        "explanation": "需求穩定、解決方案清晰，且要求嚴格按階段順序執行，最適合的生命週期是**預測型（Predictive）**。"
+    },
+    {
+        "id": 14,
+        "type": "single",
+        "question": "A product development team collects feedback after each cycle, refines the design, and repeats the process in spiral steps until the outcome improves. Which lifecycle is being used?",
+        "options": {
+            "A": "Predictive lifecycle",
+            "B": "Iterative lifecycle",
+            "C": "Incremental lifecycle",
+            "D": "Agile lifecycle"
+        },
+        "answer": "B",
+        "explanation": "**迭代型（Iterative）** 生命週期的核心在於「透過重複的開發週期與反饋，逐步改進並優化設計與產出（螺旋式前進）」，直至產品滿足需求。"
+    },
+    {
+        "id": 15,
+        "type": "single",
+        "question": "A project delivers usable components to the customer at regular intervals, with each delivery adding new functionality. Which lifecycle BEST describes this approach?",
+        "options": {
+            "A": "Predictive",
+            "B": "Iterative",
+            "C": "Incremental",
+            "D": "Agile"
+        },
+        "answer": "C",
+        "explanation": "**增量型（Incremental）** 的特徵是分段、有規律地向客戶交付可獨立運作的完整零件或功能，每次交付都為前一次增加新功能。"
+    },
+    {
+        "id": 16,
+        "type": "single",
+        "question": "According to PMBOK, which lifecycle is described as a hybrid approach, combining iterative feedback with incremental delivery?",
+        "options": {
+            "A": "Predictive lifecycle",
+            "B": "Iterative lifecycle",
+            "C": "Incremental lifecycle",
+            "D": "Agile lifecycle"
+        },
+        "answer": "D",
+        "explanation": "**敏捷（Agile）** 生命週期在 PMBOK 中被定義為結合了迭代反饋（Iterative）與增量交付（Incremental）的雙重優勢的方法。"
+    },
+    {
+        "id": 17,
+        "type": "single",
+        "question": "Which combination of attributes MOST strongly indicates high Agile suitability?",
+        "options": {
+            "A": "High criticality, large distributed team, low change rate",
+            "B": "Stable requirements, extensive documentation, fixed delivery dates",
+            "C": "High rate of change, incremental delivery possible, low resistance to Agile",
+            "D": "Predictive planning, sequential work, centralized authority"
+        },
+        "answer": "C",
+        "explanation": "敏捷的最高適用條件包含：專案有高度的需求變更率（High rate of change）、能夠進行增量交付（Incremental delivery possible），且組織中對敏捷阻力較低。"
+    },
+    {
+        "id": 18,
+        "type": "single",
+        "question": "Which project lifecycle is MOST suitable when customer requirements are expected to change frequently, and rapid adaptation is required?",
+        "options": {
+            "A": "Predictive lifecycle",
+            "B": "Incremental lifecycle",
+            "C": "Agile lifecycle",
+            "D": "Linear lifecycle"
+        },
+        "answer": "C",
+        "explanation": "頻繁的需求變更與要求極佳的適應速度，是採用**敏捷生命週期（Agile）**的最典型情境。"
+    },
+    {
+        "id": 19,
+        "type": "single",
+        "question": "According to the Agile Suitability Filter, which condition under Culture / Organization BEST supports the successful adoption of Agile?",
+        "options": {
+            "A": "Strong hierarchical control and fixed decision rights",
+            "B": "High documentation and formal governance",
+            "C": "A supportive environment with leadership buy‑in and trust in the team",
+            "D": "Centralized decision‑making by senior management"
+        },
+        "answer": "C",
+        "explanation": "敏捷適合度評估中，組織文化維度最關鍵的加分項是：**管理階層的全力支持、信任團隊並下放決策權**（A supportive environment with leadership buy‑in and trust in the team）。"
+    },
+    {
+        "id": 20,
+        "type": "single",
+        "question": "A project team is small, cross‑functional, and experienced, but management resists Agile practices and doubts their value. Based on the Agile Suitability Filter, which dimension MOST negatively affects Agile suitability?",
+        "options": {
+            "A": "Project",
+            "B": "Team",
+            "C": "Culture / Organization",
+            "D": "Delivery model"
+        },
+        "answer": "C",
+        "explanation": "團隊本身小而有經驗，但管理層抗拒敏捷並懷疑其價值，這直接損害了**組織與文化（Culture / Organization）**的適合度，是本案推行敏捷的最大障礙。"
+    },
+    {
+        "id": 21,
+        "type": "single",
+        "question": "The Agile Suitability Filter suggests Agile is MOST appropriate when:",
+        "options": {
+            "A": "Verification and regulatory compliance dominate project priorities",
+            "B": "Local decision‑making is high and sequential working is reduced",
+            "C": "Detailed upfront documentation is mandatory",
+            "D": "Team members lack direct access to business representatives"
+        },
+        "answer": "B",
+        "explanation": "敏捷最能發揮價值的場景是：**地方決策權高且循序漸進的瀑布式工作流程減少**（Local decision‑making is high and sequential working is reduced）。"
+    },
+    {
+        "id": 22,
+        "type": "single",
+        "question": "A radar chart score shows: Culture support: high, Team size & experience: high, Project criticality: very high, Change rate: low. Based on the Agile Suitability Filter, what is the MOST reasonable interpretation?",
+        "options": {
+            "A": "Agile is fully suitable without constraints",
+            "B": "Predictive lifecycle is clearly the best option",
+            "C": "A hybrid or limited Agile approach may be more appropriate",
+            "D": "Agile suitability depends only on team capability"
+        },
+        "answer": "C",
+        "explanation": "雖然團隊文化與能力分數很高，但專案本身的變更率極低且關鍵性非常高（這需要高強度的合規與文檔控制）。因此，**採用混合模式（Hybrid）或在局限範疇內實施敏捷**會是比純預測型或純敏捷更合適的安全做法。"
+    }
+]

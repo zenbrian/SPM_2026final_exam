@@ -1,0 +1,80 @@
+[
+  {
+    "id": 50,
+    "type": "blank",
+    "question": "Frameworks such as Scrum and Kanban provide structure, but Agile practices emphasize adapting workflows based on _______________ rather than strictly following fixed plans.",
+    "answer": [
+      "feedback (or continuous feedback / changing conditions)"
+    ],
+    "explanation": "敏捷實踐強調適應性，這意味著工作流應根據**反饋（feedback，如持續反饋或變化的外部環境）**進行調整，而非盲目且對稱地遵循固定計畫。"
+  },
+  {
+    "id": 51,
+    "type": "blank",
+    "question": "The Agile focus on \"working solutions\" over other factors implies that teams should prioritize delivering _______________ instead of excessive documentation.",
+    "answer": [
+      "functional or working products (or working software)"
+    ],
+    "explanation": "敏捷宣言第二條價值「可運作的軟體重於完整的文件」說明了團隊應優先交付**可運作的產品/軟體（functional or working products / working software）**，而非過度冗餘的報告與文件。"
+  },
+  {
+    "id": 52,
+    "type": "blank",
+    "question": "Scrum and XP typically focus on team-level practices, whereas Lean Software Development extends its focus to the entire _______________, aiming to optimize system-wide performance by reducing _______________.",
+    "answer": [
+      "value stream",
+      "waste"
+    ],
+    "explanation": "精實開發（Lean）超越了 Scrum 和 XP 的團隊界限，將視角擴大到整個**價值流（value stream）**，並通過消除**浪費（waste）**來優化整個系統的端到端效能。"
+  },
+  {
+    "id": 53,
+    "type": "blank",
+    "question": "While Scrum ensures predictable delivery through fixed sprint cycles, Kanban controls workflow by limiting _______________, which helps teams avoid over-commitment without relying on _______________.",
+    "answer": [
+      "work-in-progress (WIP)",
+      "time-boxed iterations (or sprints)"
+    ],
+    "explanation": "Kanban（看板）不使用時間箱，它藉由限制**在製品數量（work-in-progress, WIP）**來防止團隊過度承諾，控制工作流並實現流暢的持續交付。"
+  },
+  {
+    "id": 54,
+    "type": "blank",
+    "question": "A team transitioning from Scrum to Kanban would shift from time-boxed iterations to a continuous flow model. This change primarily replaces the predictability of _______________ with the flexibility of _______________, which may improve responsiveness but reduce structured planning cycles.",
+    "answer": [
+      "fixed-length sprints",
+      "continuous flow (or WIP-managed workflow)"
+    ],
+    "explanation": "從 Scrum 轉換至 Kanban 代表從固定的**時間箱迭代/衝刺（fixed-length sprints）**轉換至**持續流動模式（continuous flow / WIP-managed workflow）**，這以時間上的可預測性換取了更高的適應彈性。"
+  },
+  {
+    "id": 55,
+    "type": "blank",
+    "question": "A burn-down chart tracks remaining work over time, while a burn-up chart tracks completed work. When scope changes frequently, a burn-up chart is more informative because it distinguishes between _______________ and _______________, which may not be clearly visible in a burn-down chart.",
+    "answer": [
+      "completed work",
+      "total scope (or scope changes)"
+    ],
+    "explanation": "燃盡圖無法看清是工作做完了還是範疇變動了。而燃起圖（Burn-up）會同時繪製**已完成的工作（completed work）**與**總範疇（total scope / scope changes）**兩條曲線，能清晰展現需求範疇變更的影響。"
+  },
+  {
+    "id": 56,
+    "type": "blank",
+    "question": "As a team progresses from low competence/high commitment to high competence/high commitment, the leader should gradually shift from _______________ to _______________, reducing directive behavior while maintaining appropriate support.",
+    "answer": [
+      "directing",
+      "delegating"
+    ],
+    "explanation": "根據情境領導理論（Situational Leadership），隨著團隊能力的提升，領導者應逐步從指令型（**directing**）轉移至授權型（**delegating**），減少直接指令，賦予團隊高度自主性。"
+  },
+  {
+    "id": 57,
+    "type": "blank",
+    "question": "The value stream map emphasizes analyzing the entire process from request to delivery. Improving only a single stage (e.g., design) without addressing upstream and downstream delays may not significantly reduce _______________, because optimization must consider the _______________ process.",
+    "answer": [
+      "lead time",
+      "end-to-end (or entire value stream)"
+    ],
+    "explanation": "價值流圖（VSM）強調全過程分析。局部優化（例如只優化設計）而不解決上下游的積壓，無法有效縮短整體的**前置時間（lead time）**，優化必須考量**端到端/整個價值流（end-to-end / entire value stream）**的流程。"
+  }
+]

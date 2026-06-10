@@ -1100,3 +1100,65 @@ body {
         font-size: 2.2rem;
     }
 }
+
+/* --- Scope Selection Styling --- */
+.scope-selection-card {
+    margin: 1.5rem auto 2.5rem;
+    max-width: 600px;
+    padding: 1.25rem;
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
+    background: var(--bg-secondary);
+    text-align: left;
+}
+
+.scope-title {
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.95rem;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.scope-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+}
+
+.scope-option {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1rem;
+    background: var(--bg-primary);
+    border: 1px solid var(--glass-border);
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.15s ease;
+}
+
+.scope-option input[type="radio"] {
+    margin-right: 0.5rem;
+    accent-color: var(--text-primary);
+}
+
+.scope-option:hover {
+    border-color: var(--glass-border-hover);
+    color: var(--text-primary);
+}
+
+.scope-option.active {
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    border-color: var(--text-primary);
+}
+
+.scope-option.active input[type="radio"] {
+    accent-color: var(--bg-primary);
+}
