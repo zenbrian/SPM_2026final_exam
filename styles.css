@@ -293,6 +293,38 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
+.stat-num-input {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    line-height: 1.1;
+    font-family: 'Outfit', sans-serif;
+    background: transparent;
+    border: none;
+    border-bottom: 2px dashed var(--text-muted);
+    width: 80px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+}
+
+.stat-num-input:focus {
+    border-bottom-color: var(--text-primary);
+    cursor: text;
+    transform: scale(1.05);
+}
+
+/* Hide standard arrows on number inputs */
+.stat-num-input::-webkit-outer-spin-button,
+.stat-num-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.stat-num-input[type=number] {
+    -moz-appearance: textfield;
+}
+
 .stat-label {
     font-size: 0.85rem;
     color: var(--text-secondary);

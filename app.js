@@ -115,6 +115,17 @@ function updateHomeStats() {
     if (elTotalQuestionsCount) {
         elTotalQuestionsCount.textContent = filtered.length;
     }
+
+    const limitInput = document.getElementById('quiz-limit-input');
+    if (limitInput) {
+        limitInput.max = filtered.length;
+        let val = parseInt(limitInput.value, 10);
+        if (val > filtered.length) {
+            limitInput.value = filtered.length;
+        } else if (isNaN(val) || val <= 0) {
+            limitInput.value = Math.min(10, filtered.length);
+        }
+    }
 }
 
 function updateScopeIndicator() {
@@ -227,6 +238,25 @@ function setupEventListeners() {
     // Handle recalculation on window resize for responsive layouts
     window.addEventListener('resize', updateScopeIndicator);
 
+    // Quiz limit input validation
+    const limitInput = document.getElementById('quiz-limit-input');
+    if (limitInput) {
+        limitInput.addEventListener('change', () => {
+            const maxVal = parseInt(limitInput.max, 10) || 57;
+            let val = parseInt(limitInput.value, 10);
+            if (isNaN(val) || val < 1) {
+                limitInput.value = 1;
+            } else if (val > maxVal) {
+                limitInput.value = maxVal;
+            }
+        });
+        limitInput.addEventListener('keydown', (e) => {
+            if (e.key === '.' || e.key === 'e' || e.key === '+' || e.key === '-') {
+                e.preventDefault();
+            }
+        });
+    }
+
     // Quiz view actions
     btnNextQuestion.addEventListener('click', advanceQuiz);
     btnSubmitAnswers.addEventListener('click', handleSubmitAnswers);
@@ -265,9 +295,15 @@ function startQuiz() {
         return;
     }
 
-    // 1. Shuffling and picking up to 10 questions
+    // 1. Shuffling and picking up to user selected questions
+    const limitInput = document.getElementById('quiz-limit-input');
+    let desiredCount = limitInput ? parseInt(limitInput.value, 10) : 10;
+    if (isNaN(desiredCount) || desiredCount <= 0) {
+        desiredCount = 10;
+    }
+
     const shuffledBank = shuffle([...filteredQuestions]);
-    quizQuestions = shuffledBank.slice(0, Math.min(10, shuffledBank.length));
+    quizQuestions = shuffledBank.slice(0, Math.min(desiredCount, shuffledBank.length));
 
     // 2. Reset states
     currentQuestionIndex = 0;
@@ -617,6 +653,10 @@ function finishQuiz() {
 
     // Update Result Score Overlay
     elResultScoreText.textContent = score;
+    const elScoreMax = document.querySelector('.score-max');
+    if (elScoreMax) {
+        elScoreMax.textContent = `/ ${quizQuestions.length}`;
+    }
     elResultCorrectCount.textContent = `${score} 題`;
     elResultIncorrectCount.textContent = `${quizQuestions.length - score} 題`;
     elResultTimeText.textContent = timeStr;
