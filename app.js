@@ -146,7 +146,7 @@ function updateScopeIndicator() {
 // --- Data Fetching ---
 async function loadQuestions() {
     try {
-        const response = await fetch('questions.json');
+        const response = await fetch('questions.json?v=1.0.5');
         if (!response.ok) {
             throw new Error('Could not fetch questions.json');
         }

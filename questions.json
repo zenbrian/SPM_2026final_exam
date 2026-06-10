@@ -328,11 +328,12 @@
     },
     "answer": [
       "A",
+      "B",
       "D",
       "E",
       "F"
     ],
-    "explanation": "**敏捷永續開發（Agile Sustainable Development）**強調團隊應該保持一個健康、可持續的開發步調。其核心考量包含：團隊成員的工作與生活平衡（A）、在交付速度與軟體品質之間取得平衡（D）、長期保持一致且可管理的開發節奏（E），以及持續優化管理流程（F）。"
+    "explanation": "**敏捷永續開發（Agile Sustainable Development）**強調團隊應該保持一個健康、可持續的開發步調。其核心考量包含：團隊成員的工作與生活平衡（A）、適應不斷變化的環境（B）、在交付速度與軟體品質之間取得平衡（D）、長期保持一致且可管理的開發節奏（E），以及持續優化管理流程（F）。"
   },
   {
     "id": 25,
@@ -362,8 +363,8 @@
   },
   {
     "id": 27,
-    "type": "multiple",
-    "question": "Which of the following is a widely used agile framework? (multiple answers are allowed)",
+    "type": "single",
+    "question": "Which of the following is a widely used agile framework?",
     "options": {
       "A": "scaled agile",
       "B": "kanban",
@@ -371,14 +372,8 @@
       "D": "scrum",
       "E": "lean"
     },
-    "answer": [
-      "A",
-      "B",
-      "C",
-      "D",
-      "E"
-    ],
-    "explanation": "這些全部都是廣泛使用的敏捷框架或方法論。**Scrum** 專注於跨功能團隊與迭代交付；**Kanban** 專注於工作流視覺化與限制 WIP；**XP** 著重工程實踐；**Lean** 專注消除浪費；**Scaled Agile (SAFe)** 用於企業規模化敏捷。"
+    "answer": "D",
+    "explanation": "這題是單選題，正確答案是 **Scrum**。雖然 Scaled Agile、Kanban、XP、Lean 均為敏捷框架或方法論，但在本題單選設定中，Scrum 是最典型且廣泛應用的敏捷開發框架。"
   },
   {
     "id": 28,
@@ -437,8 +432,8 @@
       "C": "postponing the use of resources until the last minute",
       "D": "postponing the waste of resources until the last minute"
     },
-    "answer": "B",
-    "explanation": "在精實（Lean）開發中，「延遲決策」（Decide as late as possible）指的是**延遲承諾直到「最後關鍵時刻」（Last Responsible Moment）**。這樣做是為了收集更多的事實與數據，避免過早依據假設做出錯誤決定，從而做出更好的決策。"
+    "answer": "A",
+    "explanation": "在敏捷與精實（Lean）軟體開發中，延遲決策（Delay in making decision）代表**延後決策帶來的負面影響（postponing the negative impact of a decision）**。藉由延遲承諾至最後關鍵時刻（Last Responsible Moment），能減少不確定性，並降低因過早決定而造成的潛在負面風險。"
   },
   {
     "id": 32,
@@ -482,9 +477,9 @@
       "E": "None of the above"
     },
     "answer": [
-      "A"
+      "E"
     ],
-    "explanation": "在 Scrum 中，PO 全權建立並擁有 Product Backlog（B, D），且有權取消 Sprint（C）。PO **不應該只是一個傳話筒或中介人（An intermediate-person）**，而是必須具備足夠決策權的主導者。因此，A 描述 PO 為「內部團隊與市場需求的中介人」是不符合敏捷精神的角色定位。"
+    "explanation": "在 Scrum 敏捷框架中，所有選項 (A, B, C, D) 都是產品負責人（Product Owner, PO）的角色定位與職責：PO 是市場需求與內部開發團隊的橋樑、負責建立並擁有 Product Backlog、且擁有取消 Sprint 的決定權。因此，沒有任何一項「不是」PO 的職責，正確答案為 **None of the above（以上皆非）**。"
   },
   {
     "id": 35,
